@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.example.citizentesting" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>CitizenTestingApp</name>
+    <description>
+        A citizen testing app for reporting incidents.
+    </description>
+    <author email="dev@cordova.apache.org" href="https://cordova.apache.org">
+        Apache Cordova Team
+    </author>
+
+    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashScreenDelay" value="3000" />
+
+    <icon src="www/res/icon/android/icon.png" density="ldpi" />
+    <icon src="www/res/icon/android/icon.png" density="mdpi" />
+    <icon src="www/res/icon/android/icon.png" density="hdpi" />
+    <icon src="www/res/icon/android/icon.png" density="xhdpi" />
+    <icon src="www/res/icon/android/icon.png" density="xxhdpi" />
+    <icon src="www/res/icon/android/icon.png" density="xxxhdpi" />
+
+    <platform name="android">
+        <splash src="www/res/screen/android/screen-ldpi-portrait.png" density="ldpi" />
+        <splash src="www/res/screen/android/screen-mdpi-portrait.png" density="mdpi" />
+        <splash src="www/res/screen/android/screen-hdpi-portrait.png" density="hdpi" />
+        <splash src="www/res/screen/android/screen-xhdpi-portrait.png" density="xhdpi" />
+        <splash src="www/res/screen/android/screen-xxhdpi-portrait.png" density="xxhdpi" />
+        <splash src="www/res/screen/android/screen-xxxhdpi-portrait.png" density="xxxhdpi" />
+    </platform>
+
+    <platform name="android">
+        <config-file parent="/*" target="AndroidManifest.xml">
+            <uses-permission android:name="android.permission.INTERNET" />
+        </config-file>
+    </platform>
+
+    <plugin name="cordova-plugin-whitelist" spec="1" />
+    <plugin name="cordova-plugin-device" spec="2.0.3" />
+    <plugin name="cordova-plugin-splashscreen" spec="6.0.0" />
+    <plugin name="cordova-plugin-statusbar" spec="3.0.0" />
+    <plugin name="cordova-plugin-ionic-webview" spec="latest" />
+
+
+    <preference name="Orientation" value="default" />
+    <preference name="Fullscreen" value="false" />
+
+    <allow-navigation href="*" />
+    <allow-intent href="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+
+    <content src="index.html" />
+
+    <platform name="android">
+
+    </platform>
+    <platform name="ios">
+
+    </platform>
+
+</widget>

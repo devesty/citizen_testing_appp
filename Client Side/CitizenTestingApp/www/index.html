@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Citizen Testing App</title>
+    <script src="node_modules/index.js/dist/index.js"></script>
+    <script src="node_modules/socket.io-client/dist/socket.io.js"></script>
+    <script src="js/index.js"></script>
+</head>
+<body>
+    <h1>Citizen Testing App</h1>
+
+    <form>
+        <label for="incidentType">Incident Type:</label>
+        <input type="text" id="incidentType" required>
+
+        <label for="incidentDescription">Incident Description:</label>
+        <textarea id="incidentDescription" required></textarea>
+
+        <label for="incidentCategory">Incident Category:</label>
+        <input type="text" id="incidentCategory" required>
+
+        <button type="button" onclick="submitIncident()">Submit Incident</button>
+    </form>
+
+    <label for="selectedCategory">Select Category:</label>
+    <select id="selectedCategory" onchange="fetchIncidents(this.value)">
+        <option value="">All</option>
+        <option value="Accident">Accident</option>
+        <option value="Fighting">Fighting</option>
+        <option value="Rioting">Rioting</option>
+    </select>
+
+    <button type="button" onclick="fetchIncidents()">Fetch Incidents</button>
+
+    <script>
+        document.addEventListener('deviceready', onDeviceReady, false);
+
+        function onDeviceReady() {
+            const socket = io('http://localhost:3000'); 
+
+            socket.on('newIncident', (newIncident) => {
+                console.log('New Incident:', newIncident);
+            });
+        }
+
+        function submitIncident() {
+            const incidentType = document.getElementById('incidentType').value;
+            const incidentDescription = document.getElementById('incidentDescription').value;
+            const incidentCategory = document.getElementById('incidentCategory').value;
+
+            const newIncident = {
+                type: incidentType,
+                description: incidentDescription,
+                category: incidentCategory,
+            };
+
+            fetch('http://localhost:3000/incidents', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newIncident),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Incident submitted:', data);
+            })
+            .catch(error => {
+                console.error('Error submitting incident:', error);
+            });
+        }
+
+        function fetchIncidents(category) {
+            const url = category ? `/incidents/${category}` : '/incidents';
+
+            fetch(`http://localhost:3000${url}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log('Fetched Incidents:', data);
+            })
+            .catch(error => {
+                console.error('Error fetching incidents:', error);
+            });
+        }
+    </script>
+</body>
+</html>

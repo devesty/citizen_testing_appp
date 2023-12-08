@@ -1,0 +1,48 @@
+<!-- <!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        <meta name="color-scheme" content="light dark">
+        <link rel="stylesheet" href="css/index.css">
+        <title>Citizen Testing App</title>
+    </head>
+    <body>
+        <div class="app">
+            <h1>Citizen Testing App</h1>
+            <div id="deviceready" class="blink">
+                <p class="event listening">Connecting to Device</p>
+                <p class="event received">Device is Ready</p>
+            </div>
+        </div>
+        <script src="cordova.js"></script>
+        <script src="js/index.js"></script>
+    </body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Citizen Testing App</title>
+    <script src="node_modules/app.js/dist/app.js"></script>
+    <script src="js/app.js"></script>
+</head>
+<body>
+    <h1>Citizen Testing App</h1>
+    <form>
+        <label for="incidentType">Incident Type:</label>
+        <input type="text" id="incidentType" required>
+
+        <label for="incidentDescription">Incident Description:</label>
+        <textarea id="incidentDescription" required></textarea>
+
+        <button type="button" id="submitIncident">Submit Incident</button>
+    </form>
+
+    <button type="button" id="fetchIncidents">Fetch Incidents</button>
+</body>
+</html>
